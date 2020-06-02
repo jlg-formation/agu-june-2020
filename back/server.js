@@ -11,8 +11,8 @@ app.use((req, res, next) => {
   next();
 });
 
-app.use(express.static("./public"));
-app.use(serveIndex("./public"));
+app.use(express.static("../front/dist/front"));
+app.use(serveIndex("../front/dist/front"));
 
 app.listen(port, () =>
   console.log(`Example app listening at http://localhost:${port}`)
