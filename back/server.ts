@@ -4,6 +4,7 @@ const express = require("express");
 const serveIndex = require("serve-index");
 
 const app = express();
+// set port to 3000
 const port = 3000;
 
 app.use((req, res, next) => {
