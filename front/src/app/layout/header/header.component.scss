@@ -1,0 +1,19 @@
+img {
+  height: 2.5em;
+  padding: 0 0.5em;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  background: #eee;
+  height: 3em;
+}
+
+a {
+  display: flex;
+  align-items: center;
+  span {
+    font-size: 1.4em;
+  }
+}
