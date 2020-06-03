@@ -35,4 +35,10 @@ export class ListComponent implements OnInit {
     this.selectedArticles.push(article);
     console.log('this.selectedArticles: ', this.selectedArticles);
   }
+
+  delete() {
+    console.log('delete');
+    this.articleService.delete(this.selectedArticles);
+    this.selectedArticles.length = 0;
+  }
 }

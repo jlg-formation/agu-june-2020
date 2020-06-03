@@ -32,4 +32,16 @@ export class ArticleService {
     this.articles.push(article);
     this.save();
   }
+
+  delete(selectedArticles: Article[]) {
+    for (const article of selectedArticles) {
+      this.deleteOne(article);
+    }
+  }
+
+  deleteOne(article: Article) {
+    const index = this.articles.findIndex((a) => a === article);
+    this.articles.splice(index, 1);
+    this.save();
+  }
 }
