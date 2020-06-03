@@ -1,0 +1,34 @@
+caption {
+  display: none;
+}
+
+.buttons {
+  margin-bottom: 0.5em;
+}
+
+table {
+  border: 0.1em solid #aaa;
+  border-collapse: collapse;
+}
+
+thead {
+  background: #aaa;
+}
+
+td,
+th {
+  border: none;
+  margin: 0;
+  padding: 0.5em;
+}
+
+tbody tr:nth-child(even) {
+  background: #eee;
+}
+
+.price {
+  text-align: right;
+}
+.qty {
+  text-align: right;
+}
