@@ -1,34 +1,39 @@
 <main>
   <h1>Liste des articles</h1>
-  <div class="buttons">
-    <button><fa-icon [icon]="faCoffee"></fa-icon></button>
-    <button>Ajouter</button>
+  <div class="content">
+    <div class="buttons">
+      <button><fa-icon [icon]="faRedo"></fa-icon></button>
+      <button><fa-icon [icon]="faPlus"></fa-icon></button>
+      <button><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+    </div>
+    <table>
+      <caption>
+        Table des articles
+      </caption>
+      <thead>
+        <tr>
+          <th scope="col">Nom</th>
+          <th scope="col">Prix</th>
+          <th scope="col">Quantité</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Tournevis</td>
+          <td class="price">3.60€</td>
+          <td class="qty">12</td>
+        </tr>
+        <tr>
+          <td>Marteau</td>
+          <td class="price">11.60€</td>
+          <td class="qty">121</td>
+        </tr>
+        <tr>
+          <td>Scie</td>
+          <td class="price">3.40€</td>
+          <td class="qty">1255</td>
+        </tr>
+      </tbody>
+    </table>
   </div>
-  <table>
-    <caption>Table des articles</caption>
-    <thead>
-      <tr>
-        <th scope="col">Nom</th>
-        <th scope="col">Prix</th>
-        <th scope="col">Quantité</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>Tournevis</td>
-        <td class="price">3.60€</td>
-        <td class="qty">12</td>
-      </tr>
-      <tr>
-        <td>Marteau</td>
-        <td class="price">11.60€</td>
-        <td class="qty">121</td>
-      </tr>
-      <tr>
-        <td>Scie</td>
-        <td class="price">3.40€</td>
-        <td class="qty">1255</td>
-      </tr>
-    </tbody>
-  </table>
 </main>

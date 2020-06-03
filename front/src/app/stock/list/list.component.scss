@@ -2,8 +2,19 @@ caption {
   display: none;
 }
 
+.content {
+  display: flex;
+  flex-flow: column;
+  align-items: flex-start;
+}
+
 .buttons {
+  display: flex;
+  width: 19em;
   margin-bottom: 0.5em;
+  button {
+    margin-right: 0.2em;
+  }
 }
 
 table {

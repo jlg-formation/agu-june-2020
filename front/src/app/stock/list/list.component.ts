@@ -1,5 +1,5 @@
-import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { faCoffee } from '@fortawesome/free-solid-svg-icons';
+import { Component, OnInit } from '@angular/core';
+import { faRedo, faPlus, faTrashAlt } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-list',
@@ -7,7 +7,9 @@ import { faCoffee } from '@fortawesome/free-solid-svg-icons';
   styleUrls: ['./list.component.scss'],
 })
 export class ListComponent implements OnInit {
-  faCoffee = faCoffee;
+  faRedo = faRedo;
+  faPlus = faPlus;
+  faTrashAlt = faTrashAlt;
   constructor() {}
 
   ngOnInit(): void {}
