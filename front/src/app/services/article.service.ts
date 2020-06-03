@@ -16,4 +16,8 @@ export class ArticleService {
   constructor() {
     console.log('coucouc je cree le article service');
   }
+
+  add(article: Article) {
+    this.articles.push(article);
+  }
 }
