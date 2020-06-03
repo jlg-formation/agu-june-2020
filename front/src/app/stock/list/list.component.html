@@ -6,7 +6,7 @@
       <button routerLink="/stock/create">
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
-      <button><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+      <button *ngIf="selectedArticles.length > 0"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
     </div>
     <table>
       <caption>
