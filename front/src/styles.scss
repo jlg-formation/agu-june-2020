@@ -5,6 +5,15 @@ body {
   font-family: sans-serif;
 }
 
+main {
+  display: flex;
+  flex-flow: column;
+  align-items: center;
+  width: 100%;
+  max-width: 50em;
+  padding: 0.5em;
+}
+
 a {
   text-decoration: inherit;
   color: inherit;
