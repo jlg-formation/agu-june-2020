@@ -10,6 +10,7 @@ export class ArticleService {
     { name: 'Marteau', price: 4.56, qty: 10 },
     { name: 'Scie', price: 7.86, qty: 13 },
     { name: 'Pince', price: 3.0, qty: 15 },
+    { name: 'Clé à molette en prix disounted', price: 3.0, qty: 15 },
   ];
 
   constructor() {
