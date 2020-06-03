@@ -9,12 +9,13 @@ import { LayoutModule } from './layout/layout.module';
 import { HomeComponent } from './routes/home/home.component';
 import { LegalComponent } from './routes/legal/legal.component';
 import { StockModule } from './stock/stock.module';
+import { WidgetModule } from './widget/widget.module';
 
 registerLocaleData(localeFr, 'fr-FR');
 
 @NgModule({
   declarations: [AppComponent, HomeComponent, LegalComponent],
-  imports: [BrowserModule, AppRoutingModule, LayoutModule, StockModule],
+  imports: [BrowserModule, AppRoutingModule, LayoutModule, StockModule, WidgetModule],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
     { provide: DEFAULT_CURRENCY_CODE, useValue: 'EUR' },
