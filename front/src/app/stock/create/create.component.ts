@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-create',
@@ -12,7 +13,12 @@ export class CreateComponent implements OnInit {
     price: new FormControl(2.34, [Validators.required]),
     qty: new FormControl(100, [Validators.required]),
   });
-  constructor() {}
+  constructor(private router: Router) {}
 
   ngOnInit(): void {}
+
+  submit() {
+    console.log('submit...');
+    this.router.navigateByUrl('/stock/list');
+  }
 }
