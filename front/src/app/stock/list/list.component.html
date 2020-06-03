@@ -3,7 +3,9 @@
   <div class="content">
     <div class="buttons">
       <button><fa-icon [icon]="faRedo"></fa-icon></button>
-      <button routerLink="/stock/create"><fa-icon [icon]="faPlus"></fa-icon></button>
+      <button routerLink="/stock/create">
+        <fa-icon [icon]="faPlus"></fa-icon>
+      </button>
       <button><fa-icon [icon]="faTrashAlt"></fa-icon></button>
     </div>
     <table>
@@ -18,20 +20,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr>
-          <td>Tournevis</td>
-          <td class="price">3.60€</td>
-          <td class="qty">12</td>
-        </tr>
-        <tr>
-          <td>Marteau</td>
-          <td class="price">11.60€</td>
-          <td class="qty">121</td>
-        </tr>
-        <tr>
-          <td>Scie</td>
-          <td class="price">3.40€</td>
-          <td class="qty">1255</td>
+        <tr *ngFor="let article of articleService.articles">
+          <td class="name">{{ article.name }}</td>
+          <td class="price">{{ article.price | currency : 'EUR' }}</td>
+          <td class="qty">{{ article.qty }}</td>
         </tr>
       </tbody>
     </table>
