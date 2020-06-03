@@ -14,4 +14,8 @@ export class ListComponent implements OnInit {
   constructor(public articleService: ArticleService) {}
 
   ngOnInit(): void {}
+
+  select() {
+    console.log('select');
+  }
 }
