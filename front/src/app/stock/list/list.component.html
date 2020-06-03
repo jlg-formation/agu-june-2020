@@ -20,7 +20,7 @@
         </tr>
       </thead>
       <tbody>
-        <tr (click)="select()" *ngFor="let article of articleService.articles">
+        <tr (click)="select($event, article)" *ngFor="let article of articleService.articles">
           <td class="name" [title]="article.name">
             {{ article.name | ellipsis }}
           </td>

@@ -43,3 +43,11 @@ tbody tr:nth-child(even) {
 .qty {
   text-align: right;
 }
+
+tbody tr {
+  cursor: pointer;
+}
+
+tbody tr.selected {
+  background: #ddd;
+}
