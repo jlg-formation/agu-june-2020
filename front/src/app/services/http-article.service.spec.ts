@@ -48,14 +48,15 @@ describe('HttpArticleService', () => {
   });
 
   it('should add an article in the back-end', fakeAsync(() => {
-    httpMock.expectOne(`/ws/articles`).flush(articles);
+    // simulate first refresh (in the constructor)
+    httpMock.expectOne(`/ws/articles`).flush([...articles]);
 
+    // preparing add
     const article = {
       name: 'Scie',
       price: 2.34,
       qty: 123,
     } as Article;
-    tick();
     service.add(article);
     const createdArticle = { ...article, id: 'a34' };
     const request = httpMock.expectOne(`/ws/articles`);
@@ -64,10 +65,13 @@ describe('HttpArticleService', () => {
       status: 201,
       statusText: 'Created',
     });
-    tick();
-    const newArticles = [...articles, article];
+
+    // simulate refresh after adding article
+    const newArticles = [...articles, createdArticle];
     httpMock.expectOne(`/ws/articles`).flush(newArticles);
+
     expect(service.articles.length === 3).toBeTrue();
+    console.log('service.articles.length: ', service.articles.length);
   }));
 
   afterEach(() => {
