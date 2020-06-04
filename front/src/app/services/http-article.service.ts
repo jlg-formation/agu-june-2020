@@ -46,4 +46,22 @@ export class HttpArticleService extends ArticleService {
         },
       });
   }
+
+  deleteOne(article: Article) {
+    super.deleteOne(article);
+    this.http
+    .delete<void>('http://localhost:3000/ws/articles/' + article.id)
+    .subscribe({
+      next: (art) => {
+        console.log('art: ', art);
+        this.refresh();
+      },
+      error: (err) => {
+        console.log('err: ', err);
+      },
+      complete: () => {
+        console.log('complete');
+      },
+    });
+  }
 }
