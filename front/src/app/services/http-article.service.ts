@@ -48,6 +48,9 @@ export class HttpArticleService extends ArticleService {
   }
 
   delete(selectedArticles: Article[]) {
+    for (const article of selectedArticles) {
+      super.deleteOne(article);
+    }
     const ids = selectedArticles.map((a) => a.id);
     const options = {
       headers: new HttpHeaders({
@@ -73,6 +76,7 @@ export class HttpArticleService extends ArticleService {
   }
 
   deleteOne(article: Article) {
+    super.deleteOne(article);
     this.http
       .delete<void>('http://localhost:3000/ws/articles/' + article.id)
       .subscribe({
