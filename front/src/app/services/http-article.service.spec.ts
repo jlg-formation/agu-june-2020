@@ -67,11 +67,9 @@ describe('HttpArticleService', () => {
     });
 
     // simulate refresh after adding article
-    const newArticles = [...articles, createdArticle];
-    httpMock.expectOne(`/ws/articles`).flush(newArticles);
+    httpMock.expectOne(`/ws/articles`).flush([...articles, createdArticle]);
 
     expect(service.articles.length === 3).toBeTrue();
-    console.log('service.articles.length: ', service.articles.length);
   }));
 
   afterEach(() => {
