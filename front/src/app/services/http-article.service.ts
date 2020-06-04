@@ -28,4 +28,22 @@ export class HttpArticleService extends ArticleService {
       },
     });
   }
+
+  add(article: Article) {
+    super.add(article);
+    this.http
+      .post<Article>('http://localhost:3000/ws/articles', article)
+      .subscribe({
+        next: (art) => {
+          console.log('art: ', art);
+          this.refresh();
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+        complete: () => {
+          console.log('complete');
+        },
+      });
+  }
 }
