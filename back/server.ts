@@ -2,10 +2,14 @@ console.log("starting server");
 
 import express from "express";
 import serveIndex from "serve-index";
+import cors from "cors";
 
 const app = express();
 // set port to 3000
 const port = 3000;
+
+
+app.use(cors());
 
 app.use((req, res, next) => {
   console.log("req.url: ", req.url);
