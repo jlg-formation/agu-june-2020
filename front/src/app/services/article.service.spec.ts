@@ -7,10 +7,16 @@ describe('ArticleService', () => {
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
-    service = TestBed.inject(ArticleService);
   });
 
   it('should be created', () => {
+    service = TestBed.inject(ArticleService);
+    expect(service).toBeTruthy();
+  });
+
+  it('should return zero articles', () => {
+    localStorage.removeItem('articles');
+    service = TestBed.inject(ArticleService);
     expect(service).toBeTruthy();
   });
 });
