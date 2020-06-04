@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ArticleService } from './article.service';
 import { Article } from '../interfaces/article';
-import { environment } from 'src/environments/environment';
+
+const url = '/ws';
 
 @Injectable({
   providedIn: 'root',
@@ -15,7 +16,7 @@ export class HttpArticleService extends ArticleService {
   }
 
   refresh() {
-    this.http.get<Article[]>(environment.endPoint + '/articles').subscribe({
+    this.http.get<Article[]>(url + '/articles').subscribe({
       next: (articles) => {
         console.log('articles: ', articles);
         this.articles = articles;
@@ -33,7 +34,7 @@ export class HttpArticleService extends ArticleService {
   add(article: Article) {
     super.add(article);
     this.http
-      .post<Article>(environment.endPoint + '/articles', article)
+      .post<Article>(url + '/articles', article)
       .subscribe({
         next: (art) => {
           console.log('art: ', art);
@@ -61,7 +62,7 @@ export class HttpArticleService extends ArticleService {
     };
 
     this.http
-      .delete<void>(environment.endPoint + '/bulk/articles', options)
+      .delete<void>(url + '/bulk/articles', options)
       .subscribe({
         next: (art) => {
           console.log('art: ', art);
@@ -79,7 +80,7 @@ export class HttpArticleService extends ArticleService {
   deleteOne(article: Article) {
     super.deleteOne(article);
     this.http
-      .delete<void>(environment.endPoint + '/articles/' + article.id)
+      .delete<void>(url + '/articles/' + article.id)
       .subscribe({
         next: (art) => {
           console.log('art: ', art);

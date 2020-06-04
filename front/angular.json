@@ -63,7 +63,8 @@
           "options": {
             "browserTarget": "front:build",
             "port": 4300,
-            "host": "localhost"
+            "host": "localhost",
+            "proxyConfig": "src/proxy.conf.json"
           },
           "configurations": {
             "production": {
