@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { ArticleService } from './article.service';
 import { Article } from '../interfaces/article';
 
@@ -47,21 +47,45 @@ export class HttpArticleService extends ArticleService {
       });
   }
 
-  deleteOne(article: Article) {
-    super.deleteOne(article);
+  delete(selectedArticles: Article[]) {
+    const ids = selectedArticles.map((a) => a.id);
+    const options = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+      }),
+      body: ids,
+    };
+
     this.http
-    .delete<void>('http://localhost:3000/ws/articles/' + article.id)
-    .subscribe({
-      next: (art) => {
-        console.log('art: ', art);
-        this.refresh();
-      },
-      error: (err) => {
-        console.log('err: ', err);
-      },
-      complete: () => {
-        console.log('complete');
-      },
-    });
+      .delete<void>('http://localhost:3000/ws/bulk/articles', options)
+      .subscribe({
+        next: (art) => {
+          console.log('art: ', art);
+          this.refresh();
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+        complete: () => {
+          console.log('complete');
+        },
+      });
+  }
+
+  deleteOne(article: Article) {
+    this.http
+      .delete<void>('http://localhost:3000/ws/articles/' + article.id)
+      .subscribe({
+        next: (art) => {
+          console.log('art: ', art);
+          this.refresh();
+        },
+        error: (err) => {
+          console.log('err: ', err);
+        },
+        complete: () => {
+          console.log('complete');
+        },
+      });
   }
 }

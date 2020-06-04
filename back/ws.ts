@@ -30,4 +30,13 @@ app.delete("/articles/:myId", (req, res) => {
   res.status(204).end();
 });
 
+app.delete("/bulk/articles", (req, res) => {
+  const ids = req.body;
+  for (const id of ids) {
+    const index = articles.findIndex((a) => a.id === id);
+    articles.splice(index, 1);
+  }
+  res.status(204).end();
+});
+
 export const ws = app;
