@@ -1,19 +1,28 @@
 import express from "express";
 import { Article } from "../front/src/app/interfaces/article";
+import fs from "fs";
+import path from "path";
 const app = express.Router();
 
-const articles: Article[] = [
-  { id: "a1", name: "Tournevis", price: 2.34, qty: 123 },
-  { id: "a2", name: "Marteau", price: 4.56, qty: 10 },
-  { id: "a3", name: "Scie", price: 7.86, qty: 13 },
-  { id: "a4", name: "Pince", price: 3.0, qty: 15 },
-  { id: "a5", name: "Clé à molette en prix disounted", price: 3.0, qty: 15 },
-];
+const articles: Article[] = JSON.parse(
+  fs.readFileSync(path.resolve(__dirname, "./data.json"), { encoding: "utf8" })
+);
 
 app.use(express.json());
 
 app.get("/articles", (req, res) => {
-  res.json(articles);
+  fs.readFile(
+    path.resolve(__dirname, "./data.json"),
+    { encoding: "utf8" },
+    (err, result) => {
+      if (err) {
+        res.status(500).end();
+        return;
+      }
+      const articles = JSON.parse(result);
+      res.json(articles);
+    }
+  );
 });
 
 app.post("/articles", (req, res) => {
