@@ -1,3 +1,10 @@
 button  {
   font-size: 2em;
 }
+
+div.buttons {
+  button {
+    font-size: 1em;
+    margin: 0 0.5em;
+  }
+}

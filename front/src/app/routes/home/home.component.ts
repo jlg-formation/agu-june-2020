@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { increment, decrement, reset } from 'src/app/actions/articles.actions';
+import { State } from 'src/app/reducers';
 
 @Component({
   selector: 'app-home',
