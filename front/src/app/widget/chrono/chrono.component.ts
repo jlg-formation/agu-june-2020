@@ -30,7 +30,10 @@ export class ChronoComponent {
           this.subscription.unsubscribe();
         }
         this.subscription = interval(1000)
-          .pipe(map((x) => x + 1))
+          .pipe(
+            map((x) => x + 1),
+            startWith(0)
+          )
           .subscribe(this.pageCounter$);
       }
     });
