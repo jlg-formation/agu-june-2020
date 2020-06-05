@@ -28,5 +28,10 @@
     "name": "Clé à molette en prix disounted",
     "price": 3,
     "qty": 15
+  },
+  {
+    "name": "Tournevis",
+    "price": 2.34,
+    "qty": 100
   }
 ]

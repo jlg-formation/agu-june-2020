@@ -27,9 +27,7 @@ registerLocaleData(localeFr, 'fr-FR');
     StockModule,
     WidgetModule,
     HttpClientModule,
-    StoreModule.forRoot(reducers, {
-      metaReducers
-    }),
+    StoreModule.forRoot(reducers),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },

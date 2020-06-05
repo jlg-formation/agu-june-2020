@@ -1,4 +1,9 @@
 <main>
   <h1>Bienvenue !</h1>
   <button routerLink="/stock/list">Voir le stock</button>
+  <div class="buttons">
+    <button (click)="increment()">increment</button>
+    <button (click)="decrement()">decrement</button>
+    <button (click)="reset()">reset</button>
+  </div>
 </main>
