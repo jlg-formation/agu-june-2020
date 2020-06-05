@@ -12,29 +12,37 @@ function appendFilePromise(file, str) {
   });
 }
 
-// tache 1
-appendFilePromise(path.resolve(__dirname, "./toto.txt"), "hello jlg\n")
-  .then((result) => {
-      // tache 2
-    return appendFilePromise(
-      path.resolve(__dirname, "./toto.txt"),
-      "hello jlg\n"
-    );
-  })
-  .then((result) => {
-      // tache 3
-    return appendFilePromise(
-      path.resolve(__dirname, "./toto.txt"),
-      "hello jlg\n"
-    );
-  })
-  .then((result) => {
-      // tache 4
-    return appendFilePromise(
-      path.resolve(__dirname, "./toto.txt"),
-      "hello jlg\n"
-    );
-  })
-  .catch((err) => {
-    console.log("err: ", err);
+function sleep(delay) {
+  return new Promise((resolve, reject) => {
+    setTimeout(resolve, delay);
   });
+}
+
+(async function () {
+  try {
+    await sleep(2000);
+    // tache 1
+    await appendFilePromise(
+      path.resolve(__dirname, "./toto.txt"),
+      "hello jlg\n"
+    );
+    // tache 2
+    await appendFilePromise(
+      path.resolve(__dirname, "./toto.txt"),
+      "hello jlg\n"
+    );
+    // tache 3
+    await appendFilePromise(
+      path.resolve(__dirname, "./toto.txt"),
+      "hello jlg\n"
+    );
+    // tache 4
+    await appendFilePromise(
+      path.resolve(__dirname, "./toto.txt"),
+      "hello jlg\n"
+    );
+    // tache 5
+  } catch (err) {
+    console.log("err: ", err);
+  }
+})();
