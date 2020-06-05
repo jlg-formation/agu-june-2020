@@ -13,6 +13,8 @@ import { StockModule } from './stock/stock.module';
 import { WidgetModule } from './widget/widget.module';
 import { ArticleService } from './services/article.service';
 import { HttpArticleService } from './services/http-article.service';
+import { StoreModule } from '@ngrx/store';
+import { reducers, metaReducers } from './reducers';
 
 registerLocaleData(localeFr, 'fr-FR');
 
@@ -25,6 +27,9 @@ registerLocaleData(localeFr, 'fr-FR');
     StockModule,
     WidgetModule,
     HttpClientModule,
+    StoreModule.forRoot(reducers, {
+      metaReducers
+    }),
   ],
   providers: [
     { provide: LOCALE_ID, useValue: 'fr-FR' },
