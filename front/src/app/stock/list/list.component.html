@@ -2,11 +2,19 @@
   <h1>Liste des articles</h1>
   <div class="content">
     <div class="buttons">
-      <button (click)="articleService.refresh()"><fa-icon [icon]="faRedo"></fa-icon></button>
+      <button (click)="articleService.refresh()">
+        <fa-icon [icon]="faRedo"></fa-icon>
+      </button>
       <button routerLink="/stock/create">
         <fa-icon [icon]="faPlus"></fa-icon>
       </button>
-      <button (click)="delete()" *ngIf="selectedArticles.length > 0"><fa-icon [icon]="faTrashAlt"></fa-icon></button>
+      <button
+        class="delete"
+        (click)="delete()"
+        *ngIf="selectedArticles.length > 0"
+      >
+        <fa-icon [icon]="faTrashAlt"></fa-icon>
+      </button>
     </div>
     <table>
       <caption>
@@ -20,7 +28,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr (click)="select($event, article)" *ngFor="let article of articleService.articles">
+        <tr
+          (click)="select($event, article)"
+          *ngFor="let article of articleService.articles"
+        >
           <td class="name" [title]="article.name">
             {{ article.name | ellipsis }}
           </td>
