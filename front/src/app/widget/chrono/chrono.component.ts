@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgZone } from '@angular/core';
 import {
   interval,
   Observable,
@@ -19,22 +19,26 @@ export class ChronoComponent {
   counter$ = new BehaviorSubject(0);
   pageCounter$ = new BehaviorSubject(0);
   subscription: Subscription;
-  constructor(private router: Router) {
-    interval(1000)
-      .pipe(map((x) => x + 1))
-      .subscribe(this.counter$);
+  constructor(private router: Router, private ngZone: NgZone) {
+    this.ngZone.runOutsideAngular(() => {
+      interval(1000)
+        .pipe(map((x) => x + 1))
+        .subscribe(this.counter$);
+    });
 
     this.router.events.subscribe((val) => {
       if (val instanceof NavigationEnd) {
-        if (this.subscription) {
-          this.subscription.unsubscribe();
-        }
-        this.subscription = interval(1000)
-          .pipe(
-            map((x) => x + 1),
-            startWith(0)
-          )
-          .subscribe(this.pageCounter$);
+        this.ngZone.runOutsideAngular(() => {
+          if (this.subscription) {
+            this.subscription.unsubscribe();
+          }
+          this.subscription = interval(1000)
+            .pipe(
+              map((x) => x + 1),
+              startWith(0)
+            )
+            .subscribe(this.pageCounter$);
+        });
       }
     });
   }
